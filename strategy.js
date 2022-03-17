@@ -77,13 +77,6 @@ const stragegy = {
   },
   allValues: function (originData) {
     return originData.map(values => Object.values(values)[0])
-  },
-  getTokensByIndex: function (originData, index) {
-    return Object.values(originData[index]) && Object.values(originData[index])[0] && Object.values(originData[index])[0].tokens
-  },
-  getAllTokens: function (originData) {
-    const allValues = this.allValues(originData)
-    return allValues.map(item => item.tokens[0])
   }
 }
 
@@ -103,16 +96,4 @@ console.log(allKeys, 'allKeys')
 // 场景4: 拿到data中所有values值
 const allValues = stragegy.allValues(data, index)
 console.log(allValues, 'allValues')
-
-// 场景5: 根据传入的下标，拿到data中的tokens
-const token = stragegy.getTokensByIndex(data, index)
-console.log(token)
-
-// 场景6: 拿到所有的tokens
-const tokens = stragegy.getAllTokens(data)
-console.log(tokens)
-
-
-
-
 
