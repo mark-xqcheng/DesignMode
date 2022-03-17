@@ -66,50 +66,50 @@ const data = [
 // 定义策略对象
 
 const stragegy = {
-  key: function (index) {
-    return Object.keys(data[index])[0]
+  key: function (originData, index) {
+    return Object.keys(originData[index])[0]
   },
-  value: function (index) {
-    return Object.values(data[index])[0]
+  value: function (originData, index) {
+    return Object.values(originData[index])[0]
   },
-  allKeys: function () {
-    return data.map(key => Object.keys(key)[0])
+  allKeys: function (originData) {
+    return originData.map(key => Object.keys(key)[0])
   },
-  allValues: function () {
-    return data.map(values => Object.values(values)[0])
+  allValues: function (originData) {
+    return originData.map(values => Object.values(values)[0])
   },
-  getTokensByIndex: function (index) {
-    return Object.values(data[index]) && Object.values(data[index])[0] && Object.values(data[index])[0].tokens
+  getTokensByIndex: function (originData, index) {
+    return Object.values(originData[index]) && Object.values(originData[index])[0] && Object.values(originData[index])[0].tokens
   },
-  getAllTokens: function () {
-    const allValues = this.allValues()
+  getAllTokens: function (originData) {
+    const allValues = this.allValues(originData)
     return allValues.map(item => item.tokens[0])
   }
 }
 
 // 场景1: 根据传入的下标，拿到data中的key值
 let index = 1
-const key = stragegy.key(index)
+const key = stragegy.key(data, index)
 console.log(key)
 
 // 场景2: 根据传入的下标，拿到data中的values值
-const value = stragegy.value(index, 'value')
+const value = stragegy.value(data, index)
 console.log(value, 'value')
 
 // 场景3: 拿到data中所有key值
-const allKeys = stragegy.allKeys(index, 'allKeys')
+const allKeys = stragegy.allKeys(data, index)
 console.log(allKeys, 'allKeys')
 
 // 场景4: 拿到data中所有values值
-const allValues = stragegy.allValues(index,'allValues')
+const allValues = stragegy.allValues(data, index)
 console.log(allValues, 'allValues')
 
 // 场景5: 根据传入的下标，拿到data中的tokens
-const token = stragegy.getTokensByIndex(index)
+const token = stragegy.getTokensByIndex(data, index)
 console.log(token)
 
 // 场景6: 拿到所有的tokens
-const tokens = stragegy.getAllTokens()
+const tokens = stragegy.getAllTokens(data)
 console.log(tokens)
 
 
